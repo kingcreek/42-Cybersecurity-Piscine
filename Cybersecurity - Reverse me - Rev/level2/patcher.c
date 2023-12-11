@@ -30,6 +30,8 @@ int patch_position(long position, char patch, int size)
 }
 
 int main() {
+
+	//change i need to do, only change flow im first if condition to go ok() function
     
 	//patch 2 instructions
 
