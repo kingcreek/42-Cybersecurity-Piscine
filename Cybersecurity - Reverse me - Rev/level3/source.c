@@ -86,7 +86,7 @@ int main(void) {
     // Agregar el carácter nulo al final de claveProcesada
     claveProcesada[indiceProcesado] = '\0';
 
-    // Comparar claveProcesada con la cadena "delabere" e imprimir "OK" o "NO" en consecuencia
+    // Comparar claveProcesada con la cadena "********" e imprimir "OK" o "NO" en consecuencia
     resultadoComparacion = strcmp(claveProcesada, "********");
     if (resultadoComparacion == 0) {
         ok();
