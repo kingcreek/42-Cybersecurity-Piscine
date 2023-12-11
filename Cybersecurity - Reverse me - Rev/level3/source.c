@@ -24,7 +24,7 @@ int main(void) {
     char digitoSiguiente;
     char digitoSiguienteSiguiente;
     char caracterDummy;  // Variable utilizada para limpiar el búfer de entrada
-    char claveIngresada[24];
+    char claveIngresada[31];
     char claveProcesada[9];
     unsigned int indiceProcesado;
     int resultadoComparacion;
@@ -40,7 +40,7 @@ int main(void) {
     }
 
     // Verificar condiciones sobre los primeros dos caracteres de la clave
-    if (claveIngresada[1] != '0' || claveIngresada[0] != '0') {
+    if (claveIngresada[1] != '2' || claveIngresada[0] != '4') {
         no();
     }
 
@@ -49,7 +49,7 @@ int main(void) {
 
     // Inicializar una cadena local con el caracter 'd' en la primera posición
     memset(claveProcesada, 0, 9);
-    claveProcesada[0] = 'd';
+    claveProcesada[0] = '*';
     indiceClave = 2;
     indiceProcesado = 1;
 
@@ -87,7 +87,7 @@ int main(void) {
     claveProcesada[indiceProcesado] = '\0';
 
     // Comparar claveProcesada con la cadena "delabere" e imprimir "OK" o "NO" en consecuencia
-    resultadoComparacion = strcmp(claveProcesada, "delabere");
+    resultadoComparacion = strcmp(claveProcesada, "********");
     if (resultadoComparacion == 0) {
         ok();
     } else {
@@ -96,3 +96,7 @@ int main(void) {
 
     return 0;
 }
+
+/*
+
+*/

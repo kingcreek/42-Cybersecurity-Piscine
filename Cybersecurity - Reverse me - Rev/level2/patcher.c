@@ -30,11 +30,26 @@ int patch_position(long position, char patch, int size)
 }
 
 int main() {
+    
+	//patch 2 instructions
 
-	long patch = 0x1244; // offset position of if statment to be patched
-	if (!patch_position(patch, 0x90, 6)) //Replace 6 first bytes with 0x90 (NOP)
+	//first i never enter in while condition
+	long patch1 = 0x13f2; //patch with 0x00
+	if (!patch_position(patch1, 0x00, 1)) //only 1 byte
+		return 0;
+
+	
+    long patch2 = 0x146e; // patch if condition 0f 85 0d 00 00 00 {JNZ to JZ}
+	if (!patch_position(patch2, 0x84, 1)) //only 1 byte
+		return 0;
+
+	
+	//change flow in scanf result to avoid 3 first checks
+	long patch3 = 0x1320;
+	if (!patch_position(patch3, 0x3a, 1)) // from {0f 84 08 00 00 00} to {0f 84 3a 00 00 00} this JZ jump forward 0x38 bytes instead 8
 		return 0;
 
     printf("Program patched!\n");
+
     return 0;
 }
