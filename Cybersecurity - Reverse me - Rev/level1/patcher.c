@@ -5,7 +5,7 @@ int main() {
     char nombreArchivo[] = "level1";
     long posicion = 0x1244; // offset position of if statment to be patched
 
-    // Abrir el archivo en modo lectura y escritura binaria
+    // Open fuile in read and binary write
     archivo = fopen(nombreArchivo, "r+b");
 
     if (archivo == NULL) {
@@ -13,23 +13,23 @@ int main() {
         return 1;
     }
 
-    // Mover el puntero de lectura/escritura a la posición especificada
+    // Seek read pointer to location {posicion}
     if (fseek(archivo, posicion, SEEK_SET) != 0) {
         perror("Error al mover el puntero de archivo");
         fclose(archivo);
         return 1;
     }
 
-    // Reemplazar los 6 bytes en la posición especificada con 0x90
+    // //Replace 6 first bytes with 0x90 (NOP)
     for (int i = 0; i < 6; i++) {
-        if (fputc(0x90, archivo) == EOF) { //Replace with 0x90 (NOP)
+        if (fputc(0x90, archivo) == EOF) {
             perror("Error al escribir en el archivo");
             fclose(archivo);
             return 1;
         }
     }
 
-    // Cerrar el archivo
+    // close file
     fclose(archivo);
 
     printf("Bytes reemplazados con éxito en la posición 0x11244.\n");
